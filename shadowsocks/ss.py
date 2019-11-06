@@ -45,7 +45,8 @@ try:
                 "curl -I -s  -w \"%{time_total}\" --socks5 127.0.0.1:1082 https://google.com --max-time 5")
             output_list = output.split("\r\n")
             if error == "" and len(output_list) > 1:
-                print node["server"], " CURL TimeTotal Seconds: {0} ".format(output_list[-1], output_list[0])
+                print node["remarks"], node["server"], " CURL TimeTotal Seconds: {0} ".format(output_list[-1],
+                                                                                              output_list[0])
         except subprocess.CalledProcessError as e:
             pass
         exec_command("python local.py -d stop {pid}".format(pid=pid))
